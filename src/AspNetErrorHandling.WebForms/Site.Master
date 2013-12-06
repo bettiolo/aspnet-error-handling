@@ -1,0 +1,13 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="AspNetErrorHandling.WebForms.SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title>Simple test page</title>
+</head>
+<body>
+    <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+    <p>Body content</p>
+</body>
+</html>
