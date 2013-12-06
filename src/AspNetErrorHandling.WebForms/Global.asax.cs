@@ -9,7 +9,7 @@ namespace AspNetErrorHandling.WebForms
 		void Application_Start(object sender, EventArgs e)
 		{
 			Logger.Log(LogLocation.Application, "Start");
-			throw new Exception("Error in Application Start");
+			// throw new Exception("Error in Application Start");
 		}
 
 		void Application_End(object sender, EventArgs e)
@@ -20,10 +20,9 @@ namespace AspNetErrorHandling.WebForms
 		void Application_Error(object sender, EventArgs e)
 		{
 			var lastException = Context.Server.GetLastError().InnerException ?? Context.Server.GetLastError();
-
-			var message = string.Format("Unhandled exception in API: {0}", Request.Url.PathAndQuery);
-			Logger.Log(LogLocation.Application, "Error", message);
 			Logger.Log(LogLocation.Application, "Error", lastException.Message);
+
+			// throw new Exception("Error in Application Error");
 
 			Response.Clear();
 			Response.WriteFile("~/static/Error.html");
@@ -36,11 +35,13 @@ namespace AspNetErrorHandling.WebForms
 		void Application_BeginRequest(object sender, EventArgs e)
 		{
 			Logger.Log(LogLocation.Application, "BeginRequest");
+			// throw new Exception("Error in Application BeginRequest");
 		}
 
 		void Application_EndRequest(object sender, EventArgs e)
 		{
 			Logger.Log(LogLocation.Application, "EndRequest");
+			// throw new Exception("Error in Application EndRequest");
 		}
 	}
 }
