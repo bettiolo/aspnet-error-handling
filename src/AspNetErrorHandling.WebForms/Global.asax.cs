@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Configuration;
 using System.Net;
 using System.Web;
-using System.Web.Routing;
 
 namespace AspNetErrorHandling.WebForms
 {
@@ -11,7 +9,7 @@ namespace AspNetErrorHandling.WebForms
 		void Application_Start(object sender, EventArgs e)
 		{
 			Logger.Log(LogLocation.Application, "Start");
-			RouteConfig.RegisterRoutes(RouteTable.Routes);
+			throw new Exception("Error in Application Start");
 		}
 
 		void Application_End(object sender, EventArgs e)
@@ -24,8 +22,8 @@ namespace AspNetErrorHandling.WebForms
 			var lastException = Context.Server.GetLastError().InnerException ?? Context.Server.GetLastError();
 
 			var message = string.Format("Unhandled exception in API: {0}", Request.Url.PathAndQuery);
-			Logger.Log(LogLocation.Application, "Start", message);
-			Logger.Log(LogLocation.Application, "Start", lastException.Message);
+			Logger.Log(LogLocation.Application, "Error", message);
+			Logger.Log(LogLocation.Application, "Error", lastException.Message);
 
 			Response.Clear();
 			Response.WriteFile("~/static/Error.html");
